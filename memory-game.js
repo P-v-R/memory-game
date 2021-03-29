@@ -52,7 +52,6 @@ function updateScore(){
 
 
 // create a flippable card for each color
-
 function createCards(colors) {
   const gameBoard = document.getElementById("game");
 
@@ -65,11 +64,7 @@ function createCards(colors) {
 
   gameBoard.appendChild(card);
   }
-
-
 }
-
-/** Flip a card face-up. */
 
 // variables to keep track of cards flipped, total attemps, total score, and a lock for gameBoard to prevent overclicking
 var card1, card2;
@@ -95,7 +90,6 @@ function flipCard(card) {
     return; 
   } else if (card1 && !card2 && card !== card1){
     card2 = card;
-
     gameLock = true;
       
     // compare the two cards, if match keep flipped, if not, unflip them! 
@@ -129,7 +123,6 @@ function resetHand(){
 }
 
 /** Flip a card face-down. */
-
 function unFlipCard(card) {
   setTimeout(function(){
     card.classList.remove("flipped")
@@ -139,7 +132,6 @@ function unFlipCard(card) {
 }
 
 /** Handle clicking on a card: this could be first-card or second-card. */
-
 function handleCardClick(evt) {
     if (!gameLock){
     let currentCard = this;
@@ -148,6 +140,3 @@ function handleCardClick(evt) {
     flipCard(currentCard);
   }
 }
-
-
-
