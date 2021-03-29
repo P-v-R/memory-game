@@ -1,4 +1,13 @@
 /* you can add to or change this. */
+body{
+  font-family: 'Righteous', cursive;
+  background-color:cornsilk;
+
+}
+#title{
+  text-align: center;
+  text-decoration-line: underline;
+}
 
 #game div {
   border: 1px solid black;
@@ -14,4 +23,8 @@
 
 .flipped{
   border-radius: 5%;
+}
+
+.score{
+  text-align: center;
 }

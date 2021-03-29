@@ -27,8 +27,26 @@ function shuffle(items) {
     // swap item at i <-> item at j
     [items[i], items[j]] = [items[j], items[i]];
   }
-
   return items;
+}
+
+
+// create a way to keep track of score 
+let scoreBoard = document.getElementById("score")
+let scoreTally = document.createElement("h1")
+scoreTally.classList.add("score")
+scoreBoard.appendChild(scoreTally)
+console.log(scoreTally.innerText)
+
+// alert user when game is complete, and include # of attempts 
+function updateScore(){
+  if(score === 5){
+    setTimeout(function(){
+      return alert(`you win! attempts: ${attempt}`)
+    }, 400)
+  }
+  scoreTally.innerText = "total score: " + score
+  return
 }
 
 
@@ -58,7 +76,7 @@ var card1, card2;
 var gameLock = false
 var cardsFlipped = 0
 var score = 0
-var attemps = 0
+var attempt = 0
 
 // alert to player that the game has been won! PLEASE HELP WHY ISNT THIS WORKING!!
 if(score === 5){
@@ -75,18 +93,21 @@ function flipCard(card) {
     card1 = card;
  
     return; 
-  } else if (card1 && !card2){
+  } else if (card1 && !card2 && card !== card1){
     card2 = card;
 
     gameLock = true;
       
     // compare the two cards, if match keep flipped, if not, unflip them! 
 
-    // if a match
+    // if a match, remove ability to click, update score and refresh hand 
     if(card1.getAttribute("data-color") === card2.getAttribute("data-color")){
-      resetHand();
+      card1.removeEventListener("click", handleCardClick);
+      card2.removeEventListener("click", handleCardClick)
       gameLock = false;
       score++
+      resetHand();
+      updateScore()
       return;
 
     // if not a match
@@ -104,6 +125,7 @@ function resetHand(){
   card1 = undefined
   card2 = undefined
   cardsFlipped = 0
+  attempt++
 }
 
 /** Flip a card face-down. */
@@ -126,7 +148,6 @@ function handleCardClick(evt) {
     flipCard(currentCard);
   }
 }
-
 
 
 
