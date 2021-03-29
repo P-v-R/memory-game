@@ -13,8 +13,9 @@ body{
   border: 1px solid black;
   width: 100px;
   height: 100px;
-  margin: 20px;
-  display: inline-block;
+  margin: 19px;
+  display:inline-block;
+  position: relative;
 }
 
 .card{
