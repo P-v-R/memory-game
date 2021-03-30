@@ -72,6 +72,7 @@ var gameLock = false
 var cardsFlipped = 0
 var score = 0
 var attempt = 0
+updateScore()
 
 // alert to player that the game has been won! PLEASE HELP WHY ISNT THIS WORKING!!
 if(score === 5){
@@ -140,3 +141,13 @@ function handleCardClick(evt) {
     flipCard(currentCard);
   }
 }
+
+
+
+
+// help button with directions on how to play when clicked 
+
+var helpBtn = document.getElementById("help");
+helpBtn.addEventListener("click", function(){
+  alert("click on the squares to reveal their color, try and match the color pairs in as few attemps as possible!");
+})
